@@ -42,12 +42,13 @@ class AppiumServer:
         base_cmd = ["appium","-p",str(self.port),"--log-no-colors"]
         cmd = base_cmd+self.args.split(" ") if self.args else base_cmd
         if not self.ip.find("localhost")==0:
-            stdout, stderr = self.ssh.exe_cmd(" ".join(cmd)+" &")
+            stdout, stderr = self.ssh.exe_cmd(" ".join(cmd))
             try:
                 firstline = stdout.readline()
                 self.logfile.write(firstline)
                 print firstline
                 self.stdout = stdout
+                self.stderr = stderr
             except:
                 error = stderr.readline()
                 print error
@@ -92,7 +93,7 @@ if __name__=="__main__":
     try:
 #         driver = server._get_driver("C:\\Users\pli\Desktop\UBA.apk", platform="Android", platformVersion="18",
 #                           deviceName="2b19b4f0")
-        driver = server._get_driver("/Users/mxu/Documents/usher_automation/universal_badge_1.1.11/iOS/SingleBadge/DerivedData/Build/Products/Debug-iphonesimulator/Usher.app","iOS")
+        driver = server._get_driver("/Users/mxu/Library/Developer/Xcode/DerivedData/SingleBadge-euzismtugfkglkdnahbrxckkuhxk/Build/Products/Debug-iphonesimulator/Usher.app","iOS")
         driver.quit()
     except Exception,e:
         import traceback

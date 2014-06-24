@@ -7,7 +7,6 @@ import paramiko,traceback
 from subprocess import Popen,PIPE,STDOUT
 import socket
 import sys
-import threading
 
 def check_ip(ip):
     local_name = socket.gethostname()
