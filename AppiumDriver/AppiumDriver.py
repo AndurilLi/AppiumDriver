@@ -128,7 +128,7 @@ class AppiumDriver(webdriver.Remote):
         '''key: id, xpath, link text, partial link text, name, tag name, class name, css selector
                 -ios uiautomation, -android uiautomator, accessibility id
                 You can also import AppiumBy to get the key'''
-        if AppiumBy.is_valid(by):
+        if not AppiumBy.is_valid(by):
             raise "%s is not a Appium supported By key" % by
         if not isinstance(value, str):
             raise "%s is not a supported value, must be string" % str(value)
