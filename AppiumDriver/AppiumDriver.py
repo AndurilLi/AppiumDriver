@@ -98,7 +98,8 @@ class AppiumDriver(webdriver.Remote):
                             "app":app_path,
                             "platformName":platformName,
                             "platformVersion":platformVersion,
-                            "deviceName":deviceName
+                            "deviceName":deviceName,
+                            "autoAcceptAlerts":True
                             }
         for key in kwargs:
             cls.desired_caps[key] = kwargs[key]
