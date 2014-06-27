@@ -9,5 +9,5 @@ setup(
     zip_safe=False,
     install_requires=["PIL","paramiko","psutil","Appium-Python-Client"],
     license="MIT",
-    url='https://git/pli/appiumdriver',
+    url='http://git/pli/appiumdriver',
 )
