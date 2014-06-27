@@ -5,7 +5,7 @@ Created on Jun 7, 2014
 '''
 from appium import webdriver
 from appium.webdriver.common.mobileby import MobileBy as AppiumBy
-import json
+import json, sys
 from pagesource_elements_tree import PageSourceElementsTree
 import Utils
 
@@ -20,7 +20,8 @@ class AppiumDriver(webdriver.Remote):
         if platform in Platform.__dict__:
             self.platform = platform
         else:
-            raise Exception("Platform type not exist")
+            sys.stderr.write("Platform type not exist")
+            sys.exit(1)
         self.desired_caps = {"platformName":platform,
                              "newCommandTimeout": newCommandTimeout}
         self.browser_profile = browser_profile
@@ -130,9 +131,9 @@ class AppiumDriver(webdriver.Remote):
                 -ios uiautomation, -android uiautomator, accessibility id
                 You can also import AppiumBy to get the key'''
         if not AppiumBy.is_valid(by):
-            raise "%s is not a Appium supported By key" % by
+            raise Exception("%s is not a Appium supported By key" % by)
         if not isinstance(value, str):
-            raise "%s is not a supported value, must be string" % str(value)
+            raise Exception("%s is not a supported value, must be string" % str(value))
         try:
             return self.find_element(by, value)
         except:
