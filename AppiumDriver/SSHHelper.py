@@ -8,6 +8,7 @@ from subprocess import Popen,PIPE,STDOUT
 import sys
 import threading
 import os
+import time
 
 class SSHHelper:
     LOG_FILENAME = "ssh_paramiko.log"
@@ -81,7 +82,12 @@ class SSHHelper:
                 sys.exit(1)
             session = SSH_Blocking_Session(self.ssh, cmd, logfilepath)
             session.start()
-            return session
+            time.sleep(7)
+            if session.isAlive():
+                return session
+            else:
+                sys.stderr.write("Cannot start session with %s" % cmd)
+                sys.exit(1)
         else:
             session = Local_Blocking_Session(cmd, logfilepath)
             session.start()

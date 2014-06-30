@@ -42,8 +42,7 @@ class AppiumServer:
         base_cmd = ["appium","-p",str(self.port),"--log-no-colors"]
         cmd = " ".join(base_cmd+self.args.split(" ") if self.args else base_cmd)
         self.session = self.ssh.start_blocking_session(cmd, filepath)
-        time.sleep(7)
-            
+
     def stop_server(self):
         self.ssh.close_blocking_session(self.session)
         print "Appium Server is stopped"
