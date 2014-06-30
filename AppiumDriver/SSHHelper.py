@@ -1,7 +1,7 @@
 '''
 Created on May 16, 2014
 
-@author: yuliu
+@author: pli
 '''
 import paramiko,traceback
 from subprocess import Popen,PIPE,STDOUT
