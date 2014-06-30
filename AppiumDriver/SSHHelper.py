@@ -82,16 +82,15 @@ class SSHHelper:
                 sys.exit(1)
             session = SSH_Blocking_Session(self.ssh, cmd, logfilepath)
             session.start()
-            time.sleep(7)
-            if session.isAlive():
-                return session
-            else:
-                sys.stderr.write("Cannot start session with %s" % cmd)
-                sys.exit(1)
         else:
             session = Local_Blocking_Session(cmd, logfilepath)
             session.start()
+        time.sleep(7)
+        if session.isAlive():
             return session
+        else:
+            sys.stderr.write("Cannot start session with %s" % cmd)
+            sys.exit(1)
     
     def close_blocking_session(self, session, cmd="\x03Y\n"):
         '''default ssh close command is ctrl-C then Y and enter,
