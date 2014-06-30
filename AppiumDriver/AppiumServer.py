@@ -34,7 +34,7 @@ class AppiumServer:
                             newCommandTimeout=newCommandTimeout,
                             browser_profile=browser_profile, proxy=proxy, keep_alive=keep_alive)
     
-    def start_server(self, force_kill_old=True):
+    def start_server(self, force_kill_old=False):
         self.ssh.connect()
         if force_kill_old:
             self._kill_appium()
