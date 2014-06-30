@@ -34,9 +34,10 @@ class AppiumServer:
                             newCommandTimeout=newCommandTimeout,
                             browser_profile=browser_profile, proxy=proxy, keep_alive=keep_alive)
     
-    def start_server(self):
+    def start_server(self, force_kill_old=True):
         self.ssh.connect()
-        self._kill_appium()
+        if force_kill_old:
+            self._kill_appium()
         filepath = os.path.join(self.outputpath, "appium.log")
         base_cmd = ["appium","-p",str(self.port),"--log-no-colors"]
         cmd = " ".join(base_cmd+self.args.split(" ") if self.args else base_cmd)
