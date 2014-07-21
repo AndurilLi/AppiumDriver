@@ -101,7 +101,7 @@ class AppiumElement(WebElement):
         print "wait for element disappear failed"
         return False
     
-    def get_screen_shot_as_file(self, filename):
+    def get_screenshot_as_file(self, filename):
         self.driver.get_screenshot_as_file(filename)
         Utils.getRec(filename, self.location["x"], self.location["y"], 
                      self.location["x"] + self.size["width"], 
