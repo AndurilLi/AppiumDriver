@@ -23,7 +23,8 @@ class AppiumDriver(webdriver.Remote):
             sys.stderr.write("Platform type not exist")
             sys.exit(1)
         self.desired_caps = {"platformName":platform,
-                             "newCommandTimeout": newCommandTimeout}
+                             "newCommandTimeout": newCommandTimeout,
+                             "autoAcceptAlerts":True}
         self.browser_profile = browser_profile
         self.proxy = proxy
         self.keep_alive = keep_alive

@@ -164,6 +164,8 @@ class Local_Blocking_Session(threading.Thread):
         '''cmd not use, just keep same as Remote mode'''
         import psutil
         psutil.Process(self.session.pid).get_children()[0].kill()
+        if sys.platform.startswith("win"):
+            os.system("taskkill /f /im adb.exe")
         self.session.kill()
         self.join()
         if self.filehandler:
