@@ -7,7 +7,7 @@ setup(
     packages=['AppiumDriver'],
     include_package_data=True,
     zip_safe=False,
-    install_requires=["PIL","paramiko","psutil","Appium-Python-Client"],
+    install_requires=["Pillow","paramiko","psutil","Appium-Python-Client"],
     license="MIT",
     url='http://git/pli/appiumdriver',
 )
