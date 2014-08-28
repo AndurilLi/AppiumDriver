@@ -1,6 +1,6 @@
 #mtdriver
 
-A python driver for Appium
+A python driver for Appium to communicate with Chorus based on Official Appium Python Client
 
 ##Usage
 Remote Version
