@@ -59,32 +59,4 @@ class AppiumServer:
             print "Kill appium successful"
         elif printerr:
             sys.stderr.write(output.stderr)
-            
-
-if __name__=="__main__":
-    server = AppiumServer("localhost")
-#     server = AppiumServer("10.197.60.69", "mxu", "mstr123")
-    server.start_server()
-    try:
-        driver = server._get_driver("C:\\Users\pli\Desktop\UBA.apk", platform="Android", platformVersion="19",
-                          deviceName="emulator-5554")
-#         driver = server._get_driver("/Users/mxu/Library/Developer/Xcode/DerivedData/SingleBadge-euzismtugfkglkdnahbrxckkuhxk/Build/Products/Debug-iphonesimulator/Usher.app",
-#                                     "iOS")
-        from AppiumDriver import AppiumBy
-        from AppiumElement import AppiumElement
-        current = time.time()
-        while not driver.find_ele(AppiumBy.NAME,"Badge Recovery"):
-            time.sleep(3)
-            if time.time()-current>60:
-                break
-            pass
-        badge_recovery = AppiumElement(driver, AppiumBy.NAME, "Badge Recovery")
-        badge_recovery.click()
-        driver.find_ele(AppiumBy.NAME, "Submit")
-        time.sleep(2)
-        driver.get_screenshot_as_file("badge_recovery.jpg")
-        driver.quit()
-    except Exception,e:
-        import traceback
-        traceback.print_exc()
-    server.stop_server()
+         
